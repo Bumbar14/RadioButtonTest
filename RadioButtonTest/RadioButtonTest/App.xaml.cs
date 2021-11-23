@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using FreshMvvm;
+using Xamarin.Essentials;
 
 namespace RadioButtonTest
 {
@@ -10,9 +11,7 @@ namespace RadioButtonTest
         public App()
         {
             InitializeComponent();
-
             var page = FreshPageModelResolver.ResolvePageModel<FirstPageModel>();
-
             var basicNavContainer = new FreshNavigationContainer(page);
             MainPage = basicNavContainer;
         }
@@ -27,6 +26,16 @@ namespace RadioButtonTest
 
         protected override void OnResume()
         {
+        }
+        private bool IsLogedIn()
+        {
+            bool isLogedIn = Preferences.Get("IsLogedIn", false);
+            if (isLogedIn)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

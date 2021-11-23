@@ -1,4 +1,8 @@
-﻿using System;
+using Syncfusion.SfNumericTextBox.XForms.iOS;
+using Syncfusion.XForms.Pickers.iOS;
+using Syncfusion.SfAutoComplete.XForms.iOS;
+using Syncfusion.XForms.iOS.TextInputLayout;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,7 +26,11 @@ namespace RadioButtonTest.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.Init();
+global::Xamarin.Forms.Forms.Init();
+SfNumericTextBoxRenderer.Init();
+SfDatePickerRenderer.Init();
+SfAutoCompleteRenderer.Init();
+SfTextInputLayoutRenderer.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace RadioButtonTest
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SecondPage : ContentPage
+    public partial class SecondPage : Rg.Plugins.Popup.Pages.PopupPage
     {
         public SecondPage()
         {

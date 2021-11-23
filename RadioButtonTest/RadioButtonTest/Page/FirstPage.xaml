@@ -4,9 +4,15 @@
              x:Class="RadioButtonTest.FirstPage">
     <ContentPage.Content>
         <StackLayout>
-            <Button Text="Go to test Page"
-                    Command="{Binding GoToTestPage}"/>
+            <Picker ItemsSource="{Binding Categories}"
+                    SelectedItem="{Binding ChosenObject}"
+                    ItemDisplayBinding="{Binding CategoryName}"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Go to test Page"
+                        Command="{Binding GoToTestPage}"/>
+                <Button Text="Add new SQL"
+                        Command="{Binding AddNewWithCode}"/>
+            </StackLayout>
         </StackLayout>
-        
     </ContentPage.Content>
 </ContentPage>

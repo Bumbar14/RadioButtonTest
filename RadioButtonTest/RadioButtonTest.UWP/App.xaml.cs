@@ -1,4 +1,8 @@
-﻿using System;
+using Syncfusion.SfNumericTextBox.XForms.UWP;
+using Syncfusion.SfPicker.XForms.UWP;
+using Syncfusion.SfAutoComplete.XForms.UWP;
+using Syncfusion.XForms.UWP.TextInputLayout;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,7 +17,9 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Rg.Plugins.Popup;
 using Windows.UI.Xaml.Navigation;
+using System.Reflection;
 
 namespace RadioButtonTest.UWP
 {
@@ -54,9 +60,15 @@ namespace RadioButtonTest.UWP
             {
                 // Create a Frame to act as the navigation context and navigate to the first page
                 rootFrame = new Frame();
-
+                
                 rootFrame.NavigationFailed += OnNavigationFailed;
-                Xamarin.Forms.Forms.Init(e);
+List<Assembly> assembliesToInclude = new List<Assembly>();
+assembliesToInclude.Add(typeof(SfNumericTextBoxRenderer).GetTypeInfo().Assembly);
+assembliesToInclude.Add(typeof(SfPickerRenderer).GetTypeInfo().Assembly);
+assembliesToInclude.Add(typeof(SfAutoCompleteRenderer).GetTypeInfo().Assembly);
+assembliesToInclude.Add(typeof(SfTextInputLayoutRenderer).GetTypeInfo().Assembly);
+                Rg.Plugins.Popup.Popup.Init();
+                Xamarin.Forms.Forms.Init(e, Rg.Plugins.Popup.Popup.GetExtraAssemblies());
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {

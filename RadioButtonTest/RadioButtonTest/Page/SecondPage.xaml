@@ -1,44 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RadioButtonTest.SecondPage">
-    <Grid>
-        <StackLayout>
-           
-            <Button Text="Set 1"
-                    Command="{Binding First}"/>
-            <Button Text="Set 2"
-                    Command="{Binding Second}"/>
-            <Button Text="Set 3"
-                    Command="{Binding Third}"/>
+             x:Class="RadioButtonTest.SecondPage"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    CloseWhenBackgroundIsClicked="False"
+    Padding="20">
+    <StackLayout BackgroundColor="White"
+                 HorizontalOptions="Center"
+                VerticalOptions="Center"
+                 Padding="20">
+        <Label TextColor="Black" 
+                        HorizontalOptions="Center" 
+                        VerticalTextAlignment="Center" 
+                        Text="{Binding CategoryPopupText}" />
+
+        <Entry Text="{Binding ChosenObject.CategoryName}"/>
+        <StackLayout Orientation="Horizontal"
+                                 RadioButtonGroup.GroupName="TEST"
+                                 RadioButtonGroup.SelectedValue="{Binding ChosenObject.FlowType, Mode=TwoWay}"
+                               >
+            <RadioButton Content="Op 1"
+                                         Value="0" />
+            <RadioButton Content="Op 2"
+                                         Value="1"
+                                         />
+            <RadioButton Content="Op 3"
+                                         Value="2"/>
         </StackLayout>
 
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Save" Command="{Binding Save}"/>
+            <Button Text="Cancel" Command="{Binding Cancel}"/>
+            <Button Text="Delete" 
+                                Command="{Binding Delete}" 
+                                HorizontalOptions="EndAndExpand"
+                                TextColor="Red"/>
+        </StackLayout>
+    </StackLayout>
 
-        <ContentView BackgroundColor="#C0808080" 
-                             IsVisible="{Binding IsBusyCategory}" 
-                            >
-            <StackLayout VerticalOptions="Center" 
-                                 HorizontalOptions="Center"
-                                 >
-                <StackLayout Orientation="Vertical"  
-                                     BackgroundColor="White" 
-                                 Padding="20"
-                                 Margin="20">
-                    <StackLayout Orientation="Horizontal"
-                                     RadioButtonGroup.GroupName="TransactionType"
-                                     RadioButtonGroup.SelectedValue="{Binding FlowType}"
-                                   >
-                        <RadioButton Content="Prvi"
-                                             Value="1" />
-                        <RadioButton Content="Drugi"
-                                             Value="2"
-                                             />
-                        <RadioButton Content="Tretji"
-                                             Value="3" />
-                    </StackLayout>
-                    <Button Text="Prekliči" Command="{Binding Hide}"/>
-                </StackLayout>
-            </StackLayout>
-        </ContentView>
-    </Grid>
-</ContentPage>
+</pages:PopupPage>

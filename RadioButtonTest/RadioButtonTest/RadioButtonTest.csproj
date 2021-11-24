@@ -11,15 +11,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Icons\add-new.png" />
-    <None Remove="Icons\delete.png" />
-    <None Remove="Icons\edit.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Icons\add-new.png" />
-    <EmbeddedResource Include="Icons\delete.png" />
-    <EmbeddedResource Include="Icons\edit.png" />
+    <Compile Remove="Icons\**" />
+    <EmbeddedResource Remove="Icons\**" />
+    <None Remove="Icons\**" />
   </ItemGroup>
 
   <ItemGroup>

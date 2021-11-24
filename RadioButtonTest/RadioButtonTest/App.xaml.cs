@@ -27,15 +27,6 @@ namespace RadioButtonTest
         protected override void OnResume()
         {
         }
-        private bool IsLogedIn()
-        {
-            bool isLogedIn = Preferences.Get("IsLogedIn", false);
-            if (isLogedIn)
-            {
-                return true;
-            }
-
-            return false;
-        }
+    
     }
 }

@@ -38,7 +38,7 @@ namespace RadioButtonTest.Services
         static public readonly AsyncLazy<DatabaseConnection> Instance = new AsyncLazy<DatabaseConnection>(async () =>
         {
             var instance = new DatabaseConnection();
-            CreateTablesResult result = await Database.CreateTablesAsync<Transaction,Category,Account, FlowType>();
+            CreateTableResult result = await Database.CreateTableAsync<Category>();
             return instance;
         });
         
@@ -49,29 +49,6 @@ namespace RadioButtonTest.Services
 
 
         // Databse CRUD operations
-
-        public async Task<int> SaveOrUpdateExpense(Transaction item)
-        {
-            List<Transaction> expensesInDB = await GetAllExpensesAsync();
-            if (expensesInDB.Exists(e => e.FlowID == item.FlowID))
-            {
-                return Database.UpdateAsync(item).Result;
-            }
-            else
-            {
-                return Database.InsertAsync(item).Result;
-            }
-        }
-
-        public Task<List<Transaction>> GetAllExpensesAsync()
-        {
-            return Database.Table<Transaction>().ToListAsync();
-        }
-
-        public Task<int> DeleteExpense(Transaction item)
-        {
-            return Database.DeleteAsync(item);
-        }
 
         public Task<List<Category>> GetAllCategories()
         {
@@ -93,28 +70,6 @@ namespace RadioButtonTest.Services
         {
             return Database.DeleteAsync(item);
         }
-
-        public Task<List<Account>> GetAllAccounts()
-        {
-            return Database.Table<Account>().ToListAsync();
-        }
-        public async Task<int> SaveOrUpdateAccount(Account item)
-        {
-            List<Account> accountsInDB = await GetAllAccounts();
-            if (accountsInDB.Exists(a => a.AccountID== item.AccountID))
-            {
-                return Database.UpdateAsync(item).Result;
-            }
-            else
-            {
-                return Database.InsertAsync(item).Result;
-            }
-        }
-        public Task<int> DeleteAccount(Account item)
-        {
-            return Database.DeleteAsync(item);
-        }
-        
 
     }
 }
